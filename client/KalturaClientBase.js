@@ -257,7 +257,6 @@ KalturaClientBase.prototype.init = function(config){
 KalturaClientBase.KALTURA_SERVICE_FORMAT_JSON = 1;
 KalturaClientBase.KALTURA_SERVICE_FORMAT_XML = 2;
 KalturaClientBase.KALTURA_SERVICE_FORMAT_PHP = 3;
-KalturaClientBase.KALTURA_SERVICE_FORMAT_ICAL = 'ical';
 KalturaClientBase.KALTURA_SERVICE_FORMAT_JSONP = 9;
 
 KalturaClientBase.prototype.clientConfiguration = {};
@@ -388,11 +387,11 @@ KalturaClientBase.prototype.sendRequestHelper = function (options, body, request
 			}
 			This.debug('Headers [' + requestIndex + ']: \n\t' + headers.join('\n\t'));
 			This.debug('Response [' + requestIndex + ']: ' + data);
-			if (This.config.format == KalturaClientBase.KALTURA_SERVICE_FORMAT_XML ||This.config.format == KalturaClientBase.KALTURA_SERVICE_FORMAT_ICAL){
+			if (This.config.format != KalturaClientBase.KALTURA_SERVICE_FORMAT_JSON){
 				onCompleteCallback(data);
 			}else {
 				var obj = JSON.parse(data);
-				if (obj && isError(obj)) {
+				if (obj && This.isError(obj)) {
 					if (!onCompleteCallback) {
 						throw obj.code + ": " + obj.message;
 					}
@@ -419,7 +418,7 @@ KalturaClientBase.prototype.sendRequestHelper = function (options, body, request
 	request.end();
 }
 
-function isError(object){
+KalturaClientBase.prototype.isError = function(object) {
 	if (object){
 		if( object.hasOwnProperty("objectType") && object.objectType == 'KalturaAPIException' ) {
 			return true;
@@ -437,7 +436,6 @@ function isError(object){
  */
 KalturaClientBase.prototype.doHttpRequest = function (callCompletedCallback, requestUrl, params, files) {
 
-	var that = this;
 	var requestIndex = KalturaClientBase.requestIndex++;
 	var data = http_build_query(params);
 	var debugUrl = requestUrl + '?' + data;
@@ -472,14 +470,14 @@ KalturaClientBase.prototype.doHttpRequest = function (callCompletedCallback, req
 			'Content-Type': 'multipart/form-data; boundary=' + boundary,
 			'Content-Length': multipartBody.length
 		};
-		that.sendRequestHelper(options, multipartBody, requestIndex, callCompletedCallback, this.config.timeout);
+		this.sendRequestHelper(options, multipartBody, requestIndex, callCompletedCallback, this.config.timeout);
 
 	} else {
 		options.headers = {
 			'Content-Type' : 'application/x-www-form-urlencoded',
 			'Content-Length' : Buffer.byteLength(data)
 		};
-		that.sendRequestHelper(options, data, requestIndex, callCompletedCallback);
+		this.sendRequestHelper(options, data, requestIndex, callCompletedCallback);
 	}
 };
 
