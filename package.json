@@ -1,0 +1,17 @@
+{
+  "name": "kaltura-ftp-server",
+  "version": "0.0.1",
+  "description": "Kaltura NodeJS FTP server ",
+  "dependencies": {
+    "path": "*",
+    "url": "*",
+    "fs": "*",
+    "ftpd": ">=0.2.15",
+    "xmldoc": ">=0.4.0",
+    "node-ini": ">=1.0.0",
+    "util": ">=0.10.3",
+    "forever": ">=0.14.1",
+    "memcached": ">=0.2.8",
+    "memory-cache": ">=0.0.5"
+  }
+}
