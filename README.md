@@ -4,7 +4,7 @@ Kaltura 'ftp-api-server' allows retrieveing partner information via ftp commands
 
 # Deployment
 
-Please refer to deployment document
+Please refer to [deployment document] (https://github.com/kaltura/ftp-api-server/blob/master/ftp_api_server_deployment.md)
 
 Copyright & License
 
