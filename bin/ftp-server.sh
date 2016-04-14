@@ -7,7 +7,7 @@
 echo `date`
 
 #
-# push-server              This shell script takes care of starting and stopping a Kaltura push-server Service
+# ftp-api-server              This shell script takes care of starting and stopping a Kaltura ftp-api-server Service
 #
 # description: Kaltura ftp-api-server
 
@@ -18,11 +18,11 @@ echo `date`
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # X-Interactive:     true
-# Short-Description: Start/stop Kaltura push-server
-# Description:       Control the Kaltura push-server.
+# Short-Description: Start/stop Kaltura ftp-api-server
+# Description:       Control the Kaltura ftp-api-server
 ### END INIT INFO
 
-NAME="push_server"
+NAME="ftp-api-server"
 NODE_PATH="/root/Mytest/ftp-api-server/node_modules"
 APPLICATION_PATH="/root/Mytest/ftp-api-server/main.js"
 
