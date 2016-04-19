@@ -31,26 +31,26 @@ KalturaProcess = new kaltura.KalturaMainProcess(server);
 
 server.on('client:connected', function(connection) {
     KalturaLogger.access('client connected: ' + connection.remoteAddress);
-    // username should be built of partner-id and user-id -> 101/myId
     connection.on('command:user', function(user, success, failure) {
-        //var res = user.split("\/");
-        //if (res.length != 2) {
-        //	failure();
-        //} else {
-        //	var isnum = /^[0-9]+$/.test(res[0]);
-        //	if (!isnum || !res[1]) {
-        //		KalturaLogger.access('User Name is not in the correct format. expecting [partner-id/user-id] but got ' + user);
-        //		failure();
-        //	} else {
-        user = 'erez@gmail.com';
-        if (user) {
-            connection.username = user;
-            success();
-        } else {
+        var res = user.split("\/");
+        if (res.length != 2) {
+            KalturaLogger.access('UserName is not in the correct format. expecting [partner-id/user-id] but got ' + user);
             failure();
+        } else {
+            var isnum = /^[0-9]+$/.test(res[0]);
+            if (!isnum || !res[1]) {
+                KalturaLogger.access('UserName is not in the correct format. expecting [partner-id/user-id] but got ' + user);
+                failure();
+            } else {
+                if (user) {
+                    connection.partnerId = res[0];
+                    connection.username = res[1];
+                    success();
+                } else {
+                    failure();
+                }
+            }
         }
-        //}
-        //}
     });
 
     connection.on('command:pass', function(pass, success, failure) {
