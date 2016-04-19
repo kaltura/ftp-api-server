@@ -23,14 +23,10 @@ echo `date`
 ### END INIT INFO
 
 NAME="ftp-api-server"
-NODE_PATH="/root/Mytest/ftp-api-server/node_modules"
-APPLICATION_PATH="/root/Mytest/ftp-api-server/main.js"
+NODE_PATH="/opt/kaltura/ftp-api-server/node_modules"
+APPLICATION_PATH="/opt/kaltura/ftp-api-server/main.js"
 
-#NODE_PATH="/opt/kaltura/ftp-api-server/node_modules"
-#APPLICATION_PATH="/opt/kaltura/ftp-api-server/main.js"
-
-PIDFILE="/root/Mytest/ftp-api-server/config/ftp-server.pid"
-#PIDFILE="/opt/kaltura/ftp-api-server/config/ftp-server.pid"
+PIDFILE="/opt/kaltura/ftp-api-server/config/ftp-server.pid"
 LOGFILE="/opt/kaltura/log/ftp-api-server.log"
 MIN_UPTIME="5000"
 SPIN_SLEEP_TIME="2000"
