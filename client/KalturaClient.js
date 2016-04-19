@@ -690,6 +690,8 @@ KalturaClient.prototype.init = function(config){
 	this.scheduleEvent = new kaltura.services.KalturaScheduleEventService(this);
 	this.scheduleResource = new kaltura.services.KalturaScheduleResourceService(this);
 	this.scheduleEventResource = new kaltura.services.KalturaScheduleEventResourceService(this);
+	this.requestConfiguration = {};
+	this.clientConfiguration = {};
 };
 /**
  * @param string clientTag
