@@ -16,6 +16,7 @@ Clone https://github.com/kaltura/ftp-api-server to /opt/kaltura/ftp-api-server
 Install:
 =======================
 - Navigate to /opt/kaltura/ftp-api-server
+- npm install -g forever
 - npm install
 - ln -s /opt/kaltura/ftp-api-server/bin/ftp-server.sh /etc/init.d/kaltura_ftp_api_server
 
