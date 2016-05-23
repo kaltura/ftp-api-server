@@ -1,9 +1,11 @@
 var kaltura  = require('./lib/KalturaFTPServer');
+var config  = require('./lib/KalturaConfig');
+
 var ftpd = require('ftpd');
 
 var options = {
     host : '0.0.0.0',
-    port : 21,
+    port: KalturaConfig.config.ftp.port,
     tls : null,
 };
 
