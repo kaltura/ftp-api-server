@@ -29,6 +29,8 @@ Replace tokens in config.ini file:
 =======================
 - @LOG_DIR@ - Your logs directory from previous step (e.g. /opt/kaltura/log )
 - @MEMCACHE_HOST@ your memcache host
+- @SERVER_PORT@ - desired listening port 
+- @SERVER_HOST@ - ftp host
 
 Execution:
 =======================
